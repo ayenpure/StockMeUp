@@ -17,11 +17,11 @@ import java.util.Properties;
  */
 public class NewsMiner {
 
-	public static final String TRACKER = "tracker";
-	public static final String SOURCE = "source";
+	private static final String TRACKER = "tracker";
+	private static final String SOURCE = "source";
 
-	List<String> listedTrackers;
-	Map<String, String> trackerSources;
+	private List<String> listedTrackers;
+	private Map<String, String> trackerSources;
 
 	public NewsMiner(String configPath) {
 		trackerSources = new HashMap<String, String>();
@@ -34,24 +34,36 @@ public class NewsMiner {
 			for (File configFile : configFiles) {
 				Properties prop = new Properties();
 				prop.load(new FileInputStream(configFile));
-				String tracker = prop.getProperty("tracker");
-				String source = prop.getProperty("source");
+				String tracker = prop.getProperty(TRACKER);
+				String source = prop.getProperty(SOURCE);
 				listedTrackers.add(tracker);
 				trackerSources.put(tracker, source);
 			}
 		} catch (IOException e) {
-			//TODO : Finish Exception handling 
+			// TODO : Finish Exception handling
 		}
 	}
 
 	public static void main(String[] args) {
 		NewsMiner miner = new NewsMiner("");
-		miner.LoadFromSources();
-		
 	}
 
-	private void LoadFromSources() {
-		// TODO Auto-generated method stub
-		
+	/**
+	 * This method is intended to reload the news sources for a single tracker.
+	 * 
+	 * @param tracker
+	 *            the tracker for which the load is desired
+	 */
+	public void ExtractForSource(String tracker) {
+		// TODO : implement me
+	}
+
+	/**
+	 * This method is intended to reload the news sources for all the trackers. Use
+	 * map reduce to distribute the trackers among multiple nodes, and extract the
+	 * sources off of them.
+	 */
+	public void ExtractFromSources() {
+		// TODO : implement me
 	}
 }
