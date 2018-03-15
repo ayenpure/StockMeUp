@@ -44,8 +44,17 @@ public class NewsMiner {
 		}
 	}
 
+	private void printTrackers()
+	{
+		for(String tracker : listedTrackers)
+		{
+			System.out.println("Tracker : " + tracker + ", Source : " + trackerSources.get(tracker));
+		}
+	}
+	
 	public static void main(String[] args) {
-		NewsMiner miner = new NewsMiner("");
+		NewsMiner miner = new NewsMiner("/home/abhishek/repositories/StockMeUp/config");
+		miner.printTrackers();
 	}
 
 	/**
@@ -56,6 +65,10 @@ public class NewsMiner {
 	 */
 	public void ExtractForSource(String tracker) {
 		// TODO : implement me
+		String source = trackerSources.get(tracker);
+		SourceParser parser = new SourceParser();
+		parser.setSource(source);
+		List<MinedObject> fetchData = parser.fetchData();
 	}
 
 	/**
