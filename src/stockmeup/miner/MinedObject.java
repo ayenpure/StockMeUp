@@ -1,11 +1,6 @@
 package stockmeup.miner;
 
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-
-import org.apache.hadoop.io.Text;
-import org.apache.hadoop.io.Writable;
+import java.io.Serializable;
 
 /**
  * This class represents the mined object, which is result of parshing the RSS
@@ -14,37 +9,42 @@ import org.apache.hadoop.io.Writable;
  * @author abhishek
  *
  */
-public class MinedObject implements Writable {
+public class MinedObject implements Serializable {
 
-	private Text title;
-	private Text date;
-	private Text description;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private String title;
+	private String date;
+	private String description;
 
-	public Text getTitle() {
+	public String getTitle() {
 		return title;
 	}
 
 	public void setTitle(String title) {
-		this.title = new Text(title);
+		this.title = title;
 	}
 
-	public Text getDate() {
+	public String getDate() {
 		return date;
 	}
 
 	public void setDate(String date) {
-		this.date = new Text(date);
+		this.date = date;
 	}
 
-	public Text getDescription() {
+	public String getDescription() {
 		return description;
 	}
 
 	public void setDescription(String description) {
-		this.description = new Text(description);
+		this.description = description;
 	}
 
-	@Override
+	/*@Override
 	public void readFields(DataInput input) throws IOException {
 		title.readFields(input);
 		date.readFields(input);
@@ -56,5 +56,5 @@ public class MinedObject implements Writable {
 		title.write(output);
 		date.write(output);
 		description.write(output);
-	}
+	}*/
 }

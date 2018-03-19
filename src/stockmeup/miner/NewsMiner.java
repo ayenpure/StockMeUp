@@ -31,6 +31,7 @@ public class NewsMiner {
 						System.out.println(minedObject.getTitle() + " : " + minedObject.getDate());
 						System.out.println(minedObject.getDescription());
 						System.out.println("----------------------------------------------------");
+						System.out.println(AuxiliaryFunctions.toString(minedObject));
 					}
 				}
 			}
